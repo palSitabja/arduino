@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Every thing@ arduino</title>
+    <style>
+
+        .card-deck{
+            margin-top: 100px;
+            padding-left: 100px;
+            padding-right: 100px;
+
+        }
+        .card{
+            margin-right: 50px;
+
+        }
+        .jumbotron{
+            background: linear-gradient(#42275a,#734b6d);
+        }
+        #card_shadow:hover{
+            animation-name: shadow;
+            animation-duration: 2s;
+
+        }
+        #btn_shadow{
+            box-shadow: 8px 6px 18px lightgrey;
+            animation-duration: 1s;
+            background-color: #02B7E9;
+            color: white;
+            margin-bottom: 0px;
+        }
+        #btn_shadow:hover{
+            background-color:#0293e8;
+            animation-name: shadow1;
+        }
+        @keyframes shadow {
+            50%{box-shadow: 8px 6px 18px lightgrey;}
+            to{box-shadow: 8px 6px 18px lightgrey;}
+        }
+        @keyframes shadow1 {
+            from{box-shadow: 8px 6px 18px lightgrey;}
+            to{box-shadow: 0px 0px 0px lightgrey;}
+        }
+    </style>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+              <img class="img-fluid rounded mx-auto d-block" src="" alt="Responsive image">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+        <div style="height: 80px"></div>
+        <div class="container-fluid">
+            <img class="card-img-top" src="vibgyor.png" alt="Card image cap">
+            <h4>Description:</h4>
+            <p>This project is a cool example of RGB LED for beginners. The LED shows the all colors of a VIBGYOR with gap of 1 second.</p>
+            <h4>Items Required:</h4>
+            <ol>
+                <li>Arduino Uno</li>
+                <li>RGB LED</li>
+                <li>1k Resistors(3)</li>
+            </ol>
+            <h4>Code:</h4>
+            <code>//The Red cathod leg of the LED is connected to arduino digital pin13,blue is on 12 and green is on 11.(As the picture) int ledr = 13;<br> int ledb = 12;<br> int ledg = 11;<br> // the setup routine runs once when you press reset: void setup() { // initialize the digital pin as an output. pinMode(ledr, OUTPUT);<br> pinMode(ledb, OUTPUT);<br> pinMode(ledg, OUTPUT);<br> } // the loop routine runs over and over again forever: void loop() { digitalWrite(ledr, HIGH);<br> digitalWrite(ledb, HIGH);<br> digitalWrite(ledg, LOW);<br> delay(1000);<br> digitalWrite(ledb, HIGH);<br> digitalWrite(ledr, LOW);<br> digitalWrite(ledg, LOW);<br> delay(1000);<br> digitalWrite(ledr, LOW);<br> digitalWrite(ledb, HIGH);<br> digitalWrite(ledg, HIGH);<br> delay(1000);<br> digitalWrite(ledg, HIGH);<br> digitalWrite(ledr, LOW);<br> digitalWrite(ledb, LOW);<br> delay(1000);<br> digitalWrite(ledr, HIGH);<br> digitalWrite(ledb, LOW);<br> digitalWrite(ledg, HIGH);<br> delay(1000);<br> digitalWrite(ledr, HIGH);<br> digitalWrite(ledb, LOW);<br> digitalWrite(ledg, LOW);<br> delay(1000);<br> digitalWrite(ledr, HIGH);<br> digitalWrite(ledb, HIGH);<br> digitalWrite(ledg, HIGH);<br> delay(1000);<br> }
+</code>
+        </div>
+        <script>
+            $("#btn_shadow").hover(
+              function () {
+                $(this).removeClass(".btn_shadow");
+              }
+            );
+</script>
+
+</body>
+</html>

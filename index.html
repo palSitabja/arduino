@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Every thing@ arduino</title>
+    <style>
+        #esp{
+            position: relative;
+            top: 20px;
+            -webkit-animation-name: esp; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-delay: 0s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-iteration-count: infinite;
+            animation-name: esp;
+            animation-duration: 10s;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+            opacity: 0.9;
+        }
+        #led{
+            position: relative;
+            top: 20px;
+            -webkit-animation-name: led; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 8s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-delay: 2s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-iteration-count: infinite;
+            animation-name: led;
+            animation-iteration-count: infinite;
+            animation-duration: 8s;
+            animation-delay: 2s;
+            opacity: 0.9;
+        }
+        #servo{
+            position: relative;
+            top: 200px;
+            -webkit-animation-name: servo; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 6s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-delay: 1s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-iteration-count: infinite;
+            animation-name: servo;
+            animation-iteration-count: infinite;
+            animation-duration: 6s;
+            animation-delay: 1s;
+            opacity: 0.9;
+        }
+        #l2{
+            position: relative;
+            top: 200px;
+            -webkit-animation-name: l2; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-delay: 3s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-iteration-count: infinite;
+            animation-name: l2;
+            animation-iteration-count: infinite;
+            animation-duration: 10s;
+            animation-delay: 3;
+            opacity: 0.9;
+        }
+        @-webkit-keyframes esp {
+            0%   {left:0px;}
+            25%  {left:250px;}
+            50%  {left:500px;}
+            75%  {left:250px;}
+            100% {left:0px;}
+        }
+        @keyframes esp {
+            0%   {left:0px;}
+            25%  {left:250px;}
+            50%  {left:500px;}
+            75%  {left:250px;}
+            100% {left:0px;}
+        }
+        @-webkit-keyframes l2 {
+            0%   {left:0px;}
+            25%  {left:350px;}
+            50%  {left:500px;}
+            75%  {left:250px;}
+            100% {left:0px;}
+        }
+        @keyframes l2 {
+            0%   {left:0px;}
+            25%  {left:350px;}
+            50%  {left:500px;}
+            75%  {left:250px;}
+            100% {left:0px;}
+        }
+        @-webkit-keyframes servo {
+            0%   {right:0px;}
+            25%  {right:200px;}
+            50%  {right: 400px;}
+            75%  {right: 250px;}
+            100% {right:0px;}
+        }
+        @keyframes servo {
+            0%   {right:0px;}
+            25%  {right:200px;}
+            50%  {right: 400px;}
+            75%  {right: 250px;}
+            100% {right:0px;}
+        }
+        @-webkit-keyframes led {
+            0%   {right:0px;}
+            25%  {right:500px;}
+            50%  {right: 500px;}
+            75%  {right: 0px;}
+            100% {right:0px;}
+        }
+        @keyframes led {
+            0%   {right:0px;}
+            25%  {right:350px;}
+            50%  {right: 450px;}
+            75%  {right: 0px;}
+            100% {right:0px;}
+        }
+        .card-deck{
+            margin-top: 100px;
+            padding-left: 100px;
+            padding-right: 100px;
+
+        }
+        .card{
+            margin-right: 50px;
+
+        }
+        .jumbotron{
+            background: linear-gradient(#42275a,#734b6d);
+        }
+        #card_shadow:hover{
+            animation-name: shadow;
+            animation-duration: 2s;
+
+        }
+        #btn_shadow{
+            box-shadow: 8px 6px 18px lightgrey;
+            animation-duration: 1s;
+            background-color: #02B7E9;
+            color: white;
+            margin-bottom: 0px;
+        }
+        #btn_shadow:hover{
+            background-color:#0293e8;
+            animation-name: shadow1;
+        }
+        @keyframes shadow {
+            50%{box-shadow: 8px 6px 18px lightgrey;}
+            to{box-shadow: 8px 6px 18px lightgrey;}
+        }
+        @keyframes shadow1 {
+            from{box-shadow: 8px 6px 18px lightgrey;}
+            to{box-shadow: 0px 0px 0px lightgrey;}
+        }
+    </style>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+              <img class="img-fluid rounded mx-auto d-block" src="asset/logo2.png" alt="Responsive image">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+      <div class="container">
+        <div style="height: 80px"></div>
+    </div>
+    <!--<div class="container">
+        <div>
+            <img class="img-fluid rounded mx-auto d-block" src="asset/arduino.png" alt="Responsive image">
+        </div>
+        <img src="asset/esp.png">
+        <img src="asset/servo.png">
+        <img src="asset/led.png">
+        <img src="asset/l293d.png">-->
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><img id="esp" class="img-fluid shadow-lg" src="asset/esp.png"><br></br><img id="l2" class="img-fluid" src="asset/l293d.png"></td>
+          <td><img class="img-fluid rounded mx-auto d-block" src="asset/arduino.png" alt="Responsive image"></td>
+          <td><img id="led" class="img-fluid" src="asset/led.png"><br></br><img id="servo" class="img-fluid" src="asset/servo.png"></td>
+        </tr>
+      </tbody>
+    </table>
+
+        <div class="card-deck">
+          <div id="card_shadow" class="card ">
+            <img class="card-img-top" src="asset/vibgyor.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">How to Make a VIBGYOR by a RGB LED </h5>
+              <p class="card-text">This project is a cool example of RGB LED for beginners. The LED shows the all colors of a VIBGYOR with gap of 1 second.</p>
+              <a id="btn_shadow" href="" class="btn" role="button">step inside</a>
+            </div>
+
+          </div>
+          <div id="card_shadow" class="card">
+            <img class="card-img-top" src="asset/lcd.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Want to know how to write on a LCD screen??</h5>
+              <p class="card-text">This example shows you how to write your desire thing on a LCD screen.</p>
+                <a id="btn_shadow" href="" class="btn" role="button">step inside</a>
+            </div>
+          </div>
+          <div id="card_shadow" class="card ">
+            <img class="card-img-top" src="asset/ultrasonic.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">How to connect & measure Distance by an Ultra Sonic Sensor??</h5>
+              <p class="card-text">This project will show you how to connect Ultra Sonic Sensor(hc-sr04) to your arduino.You can use this to measure distance or height of any floor or any long objects.</p>
+                <a id="btn_shadow" href="" class="btn" role="button">step inside</a>
+            </div>
+
+          </div>
+        </div>
+        <div class="card-deck">
+          <div id="card_shadow" class="card ">
+            <img class="card-img-top" src="asset/voltage.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Measure Voltage without Voltmeter</h5>
+              <p class="card-text">This project show you how to measure voltage without voltmeter by an arduino UNO and a potentiometer. Rotate the potentiometer knob to see the voltage  in serial monitor.</p>
+                <a id="btn_shadow" href="" class="btn" role="button">step inside</a>
+            </div>
+
+          </div>
+          <div id="card_shadow" class="card ">
+            <img class="card-img-top" src="asset/servo_proj.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Run 4 SERVO Motors together by 4 POTENTIOMETERS</h5>
+              <p class="card-text">This tutorial show you how to run 4 different SERVO motors together by 4 potentiometers. You can use this to make any kind of gripper mechanism or Robotic hand where you need four or five SERVO motors.</p>
+                <a id="btn_shadow" href="" class="btn" role="button">step inside</a>
+            </div>
+
+          </div>
+          <div id="card_shadow" class="card ">
+            <img class="card-img-top" src="asset/obstacle.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"> Make your own Obstacle Avoiding Robo at a very low cost</h5>
+              <p class="card-text">Obstacle avoiding robot is  a robot which can avoid any obstacle in its path</p>
+                <a id="btn_shadow" href="" class="btn" role="button">step inside</a>
+            </div>
+
+          </div>
+</div>
+        <script>
+            $("#btn_shadow").hover(
+              function () {
+                $(this).removeClass(".btn_shadow");
+              }
+            );
+</script>
+
+</body>
+</html>
